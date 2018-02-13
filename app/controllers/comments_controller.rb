@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def create
     if current_user
       @post = Post.find(params[:post_id])
-      @comment = @post.comments.create(comment_params)
+      @comment = current_user.comments.create(comment_params)
     else
       flash[:alert] = "Must be signed in to leave a comment"
     end
